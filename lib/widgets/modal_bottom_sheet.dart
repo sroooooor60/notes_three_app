@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_three_app/widgets/custom_bottom.dart';
-import 'package:note_three_app/widgets/custom_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_three_app/cubits/add_not_cubit/add_not_cubit.dart';
 import 'package:note_three_app/widgets/modal_bottom_sheet_form.dart';
 
 class ModalBottomSheet extends StatelessWidget {
@@ -8,13 +8,16 @@ class ModalBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.only(
-            right: 16,
-            left: 16,
-            bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: ModalBottomSheetForm(),
+    return BlocProvider(
+      create: (context) => AddNotsCubit(),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(
+              right: 16,
+              left: 16,
+              bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: ModalBottomSheetForm(),
+        ),
       ),
     );
   }
