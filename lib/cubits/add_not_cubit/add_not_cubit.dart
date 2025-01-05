@@ -7,12 +7,12 @@ import 'package:note_three_app/models/not_model.dart';
 class AddNotsCubit extends Cubit<AddNotsStates> {
   AddNotsCubit() : super(AddNotInitial());
 
-  addNot(NotModel notes) {
+  addNot(NotModel notes) async {
     emit(AddNotLoading());
 
     try {
-      var notBox = Hive.box<NotModel>(KboxName);
-      notBox.add(notes);
+      var notBox = Hive.box<NotModel>(kBoxName);
+      await notBox.add(notes);
       emit(AddNotSuccess());
     } catch (e) {
       emit(AddNotFailiur(errorMessage: e.toString()));

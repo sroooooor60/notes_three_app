@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:note_three_app/models/not_model.dart';
 import 'package:note_three_app/views/edit_not_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.notes});
+
+  final NotModel notes;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +32,12 @@ class NoteItem extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(
-                    'Mostafa Sroor',
+                    notes.title,
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                 ),
                 subtitle: Text(
-                  'Mostaf Sroor will be big develober ',
+                  notes.subTitle,
                   style: TextStyle(fontSize: 24),
                 ),
                 trailing: Icon(
@@ -49,7 +52,7 @@ class NoteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                  '01-04-2025',
+                  notes.date,
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ),
